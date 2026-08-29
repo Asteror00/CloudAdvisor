@@ -1,0 +1,162 @@
+@model CloudAdvisor.ViewModels.ResultsViewModel
+@{
+  ViewData["Title"] = "Analysis Results";
+}
+
+<div class="container py-5">
+  <!-- Top Bar -->
+  <div class="d-flex justify-content-between align-items-center mb-6 flex-wrap gap-4">
+    <h2>Analysis Results Dashboard</h2>
+    <a href="/api/project/report/@ViewBag.HistoryId" class="btn btn-primary" download>↓ Download PDF Report</a>
+  </div>
+
+  <div class="results-layout">
+    <!-- Sidebar -->
+    <aside class="results-sidebar">
+      <div class="sidebar-proj-name">📁 @Model.ProjectName</div>
+      <div class="sidebar-meta">Analysed on @Model.AnalysedAt.ToString("MMM dd, yyyy")</div>
+
+      <div class="sidebar-section-title">Summary Checklist</div>
+      <ul class="sidebar-summary-list">
+        <li>
+          <span>Database</span>
+          <span style="font-weight: bold; color: @(Model.HasDatabase ? "var(--color-success)" : "var(--color-danger)")">
+            @(Model.HasDatabase ? "✓ Detected" : "✗ None")
+          </span>
+        </li>
+        <li>
+          <span>Authentication</span>
+          <span style="font-weight: bold; color: @(Model.HasAuthentication ? "var(--color-success)" : "var(--color-danger)")">
+            @(Model.HasAuthentication ? "✓ Detected" : "✗ None")
+          </span>
+        </li>
+        <li>
+          <span>File Uploads</span>
+          <span style="font-weight: bold; color: @(Model.HasFileHandling ? "var(--color-success)" : "var(--color-danger)")">
+            @(Model.HasFileHandling ? "✓ Detected" : "✗ None")
+          </span>
+        </li>
+        <li>
+          <span>REST APIs</span>
+          <span style="font-weight: bold; color: @(Model.HasApiControllers ? "var(--color-success)" : "var(--color-danger)")">
+            @(Model.HasApiControllers ? "✓ Detected" : "✗ None")
+          </span>
+        </li>
+        <li>
+          <span>Background Workers</span>
+          <span style="font-weight: bold; color: @(Model.HasBackgroundServices ? "var(--color-success)" : "var(--color-danger)")">
+            @(Model.HasBackgroundServices ? "✓ Detected" : "✗ None")
+          </span>
+        </li>
+        <li>
+          <span>Caching Layers</span>
+          <span style="font-weight: bold; color: @(Model.HasCaching ? "var(--color-success)" : "var(--color-danger)")">
+            @(Model.HasCaching ? "✓ Detected" : "✗ None")
+          </span>
+        </li>
+      </ul>
+
+      <div class="sidebar-cost-box">
+        <div class="sidebar-section-title" style="margin-bottom: var(--space-1);">Estimated Cost</div>
+        <div class="sidebar-cost-val">$@Model.TotalMonthlyCost.ToString("F2")<span style="font-size: var(--text-xs); color: var(--color-text-secondary); font-weight: 500;">/mo</span></div>
+      </div>
+
+      <a href="/dashboard" style="font-size: var(--text-sm); font-weight: 600; color: var(--color-text-secondary); display: flex; align-items: center; gap: var(--space-2);">
+        ← Back to Dashboard
+      </a>
+    </aside>
+
+    <!-- Main Results Dashboard Area -->
+    <div class="results-main">
+      <!-- Tabs Navigation -->
+      <ul class="tabs-nav" id="results-tabs">
+        <li class="tab-link active" data-tab="tab-features">Detected Features</li>
+        <li class="tab-link" data-tab="tab-recommendations">Recommendations</li>
+        <li class="tab-link" data-tab="tab-cost">Cost Estimate</li>
+        <li class="tab-link" data-tab="tab-architecture">Architecture Topology</li>
+      </ul>
+
+      <!-- Tab 1: Detected Features -->
+      <div class="tab-content active" id="tab-features">
+        <div class="table-wrapper">
+          <table class="custom-table features-table">
+            <thead>
+              <tr>
+                <th>Feature Type</th>
+                <th>Code Pattern Target</th>
+                <th>Source File Path</th>
+                <th>Line</th>
+              </tr>
+            </thead>
+            <tbody id="features-list-body">
+              <!-- Mapped rows populated by results.js -->
+              <tr><td colspan="4" class="text-center">Loading code patterns...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 2: Recommendations -->
+      <div class="tab-content" id="tab-recommendations">
+        <div class="rec-cards-list" id="recommendations-list">
+          <!-- Populated dynamically by results.js -->
+          <div class="text-center" style="padding: var(--space-8);">Loading AWS profiles...</div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Cost Estimate -->
+      <div class="tab-content" id="tab-cost">
+        <div class="cost-tab-grid">
+          <!-- Itemized Cost Table -->
+          <div class="table-wrapper" style="margin-bottom: 0;">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>AWS Service</th>
+                  <th>Monthly Cost (USD)</th>
+                  <th>Annual Projection</th>
+                </tr>
+              </thead>
+              <tbody id="cost-table-body">
+                <!-- Populated dynamically by results.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cost Breakdown Chart -->
+          <div class="table-wrapper" style="padding: var(--space-6); display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 0;">
+            <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: var(--space-4); text-transform: uppercase;">Cost Category Share</h4>
+            <div class="chart-container-premium" style="max-height: 200px; width: 100%;">
+              <canvas id="cost-breakdown-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Cost Disclaimer -->
+          <div class="cost-disclaimer">
+            <strong>Disclaimer:</strong> Pricing estimates are calculated based on current standard AWS list prices for the recommended instances and configurations. Actual costs may vary depending on data transfer volume, region configuration, and application traffic throughput.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Architecture Topology (Visual SVG Graph) -->
+      <div class="tab-content" id="tab-architecture">
+        <div class="arch-diagram-card" style="position: relative;">
+          <!-- SVG Container -->
+          <svg id="arch-svg-canvas" class="diagram-canvas" viewBox="0 0 700 400">
+            <!-- Draw connections and nodes dynamically in diagram.js -->
+          </svg>
+          <!-- Tooltip container -->
+          <div class="tooltip-svg" id="diagram-tooltip"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <!-- Chart.js and custom result handlers -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="~/js/results.js" asp-append-version="true"></script>
+  <script src="~/js/diagram.js" asp-append-version="true"></script>
+}

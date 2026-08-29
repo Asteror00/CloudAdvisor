@@ -1,0 +1,125 @@
+@{
+  ViewData["Title"] = "All Users";
+}
+
+<div class="container py-5">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <h3 class="admin-sidebar-title">CloudAdvisor Admin</h3>
+      <ul class="admin-menu">
+        <li><a href="/admin">📊 Overview</a></li>
+        <li><a href="/admin/users" class="active">👥 Users</a></li>
+        <li><a href="/admin/sessions">🔍 All Sessions</a></li>
+        <li><a href="/admin/rules">⚙ Rules</a></li>
+        <li><a href="/admin/pricing">💰 Pricing</a></li>
+      </ul>
+      <div style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--color-border);">
+        <a href="/dashboard" style="font-size: var(--text-sm); color: var(--color-text-secondary);">← Back to App</a>
+      </div>
+    </aside>
+
+    <!-- Main Panel -->
+    <div class="admin-main">
+      <div class="card-title-bar" style="margin-bottom: var(--space-6);">
+        <h2>All Registered Users</h2>
+        <button id="btn-export-csv" class="btn btn-ghost" style="font-size: var(--text-xs); padding: var(--space-2) var(--space-4);">Export CSV</button>
+      </div>
+
+      <!-- Filters Row -->
+      <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap;">
+        <input type="text" id="users-search" placeholder="Search by name or email..." class="form-input" style="max-width: 300px; flex-grow: 1;" />
+        <select id="role-filter" class="form-input" style="max-width: 160px;">
+          <option value="All">All Roles</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+        </select>
+      </div>
+
+      <!-- Users Table -->
+      <div class="table-wrapper">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;">#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Joined</th>
+              <th>Analyses</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <tr>
+              <td colspan="7" class="text-center">Loading registered users...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- User Details Drawer Modal -->
+<div class="admin-modal" id="user-drawer">
+  <div class="admin-modal-content">
+    <button class="admin-modal-close" id="user-drawer-close">✕</button>
+    <h3 class="admin-detail-title">User Account Details</h3>
+    
+    <div class="admin-detail-grid">
+      <div>
+        <div class="admin-detail-label">Full Name</div>
+        <div class="admin-detail-val" id="drawer-user-name">-</div>
+      </div>
+      <div>
+        <div class="admin-detail-label">Email Address</div>
+        <div class="admin-detail-val" id="drawer-user-email">-</div>
+      </div>
+      <div>
+        <div class="admin-detail-label">Role</div>
+        <div class="admin-detail-val" id="drawer-user-role">-</div>
+      </div>
+      <div>
+        <div class="admin-detail-label">Join Date</div>
+        <div class="admin-detail-val" id="drawer-user-joined">-</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: var(--space-6);">
+      <h4 style="font-size: var(--text-sm); font-weight: 700; margin-bottom: var(--space-3);">Analysis Run History</h4>
+      <div class="table-wrapper" style="max-height: 200px; overflow-y: auto;">
+        <table class="custom-table" style="font-size: var(--text-xs);">
+          <thead>
+            <tr>
+              <th>Project Name</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="drawer-sessions-list">
+            <tr>
+              <td colspan="4" class="text-center text-muted">No runs found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center" style="margin-top: var(--space-8); border-top: 1px solid var(--color-border); padding-top: var(--space-4);">
+      <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" id="user-active-toggle" checked />
+          <span class="slider"></span>
+        </label>
+        <span style="font-size: var(--text-xs); color: var(--color-text-secondary); font-weight: 600;">Active Account Status</span>
+      </div>
+      <button class="btn btn-ghost" id="btn-deactivate-user" style="border-color: var(--color-danger); color: var(--color-danger); font-size: var(--text-xs);">Deactivate Account</button>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/admin-users.js" asp-append-version="true"></script>
+}

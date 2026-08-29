@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - CloudAdvisor</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Custom site.css -->
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <!-- Global Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Custom Navbar Component -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="navbar-logo">
+        <span class="logo-cloud mono">Cloud</span><span class="logo-advisor">Advisor</span>
+      </a>
+      <ul class="navbar-links" id="nav-links">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/about">How It Works</a></li>
+      </ul>
+      <div class="navbar-auth" id="navbar-auth-section">
+        <!-- Default Public Actions (Loading Placeholder) -->
+        <a href="/login" class="btn btn-ghost">Log In</a>
+        <a href="/register" class="btn btn-primary">Get Started Free</a>
+      </div>
+      <button class="hamburger" id="navbar-hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <main role="main" class="flex-grow-1">
+    @RenderBody()
+  </main>
+
+  <!-- Commercial Grade Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-cols">
+        <div class="footer-col">
+          <a href="/" class="navbar-logo footer-logo">
+            <span class="logo-cloud mono">Cloud</span><span class="logo-advisor">Advisor</span>
+          </a>
+          <p class="footer-desc">Intelligent cloud infrastructure planning and advisory for modern developers.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/about">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/#pricing">Plans</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CloudAdvisor</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JS Core Modules -->
+  <script src="~/js/auth.js" asp-append-version="true"></script>
+  <script src="~/js/toast.js" asp-append-version="true"></script>
+  <script src="~/js/navbar.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

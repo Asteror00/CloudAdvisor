@@ -1,0 +1,13 @@
+{
+  "pricing": [
+    { "service": "Amazon EC2", "tier": "t3.micro", "monthlyUSD": 8.47, "unit": "instance" },
+    { "service": "Amazon EC2", "tier": "t3.small", "monthlyUSD": 16.94, "unit": "instance" },
+    { "service": "Amazon RDS (SQL Server)", "tier": "db.t3.medium", "monthlyUSD": 98.00, "unit": "instance" },
+    { "service": "Amazon RDS Multi-AZ", "tier": "db.t3.large", "monthlyUSD": 196.00, "unit": "instance" },
+    { "service": "Amazon S3", "tier": "Standard", "monthlyUSD": 4.50, "unit": "50GB estimated" },
+    { "service": "Amazon Cognito", "tier": "Standard", "monthlyUSD": 0.00, "unit": "first 50,000 MAU free" },
+    { "service": "AWS Lambda", "tier": "Standard", "monthlyUSD": 2.00, "unit": "estimated invocations" },
+    { "service": "Amazon CloudFront", "tier": "Standard", "monthlyUSD": 5.00, "unit": "estimated transfer" },
+    { "service": "AWS Elastic Load Balancer", "tier": "Application Load Balancer", "monthlyUSD": 22.27, "unit": "instance" }
+  ]
+}

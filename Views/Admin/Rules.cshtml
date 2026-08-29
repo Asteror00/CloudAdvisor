@@ -1,0 +1,45 @@
+@{
+  ViewData["Title"] = "Recommendation Rules";
+}
+
+<div class="container py-5">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <h3 class="admin-sidebar-title">CloudAdvisor Admin</h3>
+      <ul class="admin-menu">
+        <li><a href="/admin">📊 Overview</a></li>
+        <li><a href="/admin/users">👥 Users</a></li>
+        <li><a href="/admin/sessions">🔍 All Sessions</a></li>
+        <li><a href="/admin/rules" class="active">⚙ Rules</a></li>
+        <li><a href="/admin/pricing">💰 Pricing</a></li>
+      </ul>
+      <div style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--color-border);">
+        <a href="/dashboard" style="font-size: var(--text-sm); color: var(--color-text-secondary);">← Back to App</a>
+      </div>
+    </aside>
+
+    <!-- Main Panel -->
+    <div class="admin-main">
+      <div class="card-title-bar" style="margin-bottom: var(--space-4);">
+        <h2>Edit Recommendation Rules</h2>
+      </div>
+      <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-6);">
+        Modify the justification text used to explain why an AWS service is recommended. Rules are triggered automatically based on static code patterns.
+      </p>
+
+      <!-- Rules Cards Grid -->
+      <div id="rules-list-container" class="rec-cards-list">
+        <div class="text-center" style="padding: var(--space-8);">
+          <div class="skeleton skeleton-line" style="height: 120px; margin-bottom: var(--space-4);"></div>
+          <div class="skeleton skeleton-line" style="height: 120px; margin-bottom: var(--space-4);"></div>
+          <div class="skeleton skeleton-line" style="height: 120px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/admin-rules.js" asp-append-version="true"></script>
+}

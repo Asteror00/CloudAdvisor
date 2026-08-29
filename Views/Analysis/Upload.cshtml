@@ -1,0 +1,58 @@
+@{
+  ViewData["Title"] = "Analyse New Project";
+}
+
+<div class="container py-5" style="max-width: 680px;">
+  <div class="auth-header">
+    <h2 style="font-size: var(--text-2xl); font-weight: 800; margin-bottom: var(--space-2);">Analyse a New Project</h2>
+    <p class="text-muted" style="font-size: var(--text-sm);">Upload your ASP.NET Core project ZIP to get started</p>
+  </div>
+
+  <form id="upload-form" method="post" enctype="multipart/form-data">
+    <!-- Inline error message -->
+    <div class="form-alert" id="upload-error" style="display: none;"></div>
+
+    <div class="form-group">
+      <!-- Drag & Drop Zone -->
+      <div class="drag-drop-zone" id="drop-zone">
+        <div class="upload-icon">☁</div>
+        <div class="upload-text">Drag & Drop your .zip here</div>
+        <div class="upload-subtext">or click to browse files</div>
+        <div class="upload-subtext" style="margin-top: var(--space-2);">Supported: .zip (Max 50MB)</div>
+        <input type="file" id="file-input" name="ZipFile" style="display: none;" accept=".zip" />
+      </div>
+
+      <!-- File Preview Card (Hidden by default) -->
+      <div class="file-preview" id="file-preview" style="display: none;">
+        <div class="file-info">
+          <span class="file-info-icon">✓</span>
+          <div>
+            <div class="file-name" id="file-name">-</div>
+            <div class="file-size" id="file-size">-</div>
+          </div>
+        </div>
+        <button class="btn-remove-file" id="remove-file-btn">✕ Remove</button>
+      </div>
+    </div>
+
+    <!-- Project Name Field -->
+    <div class="form-group">
+      <label for="project-name" class="form-label">Project Name</label>
+      <input type="text" id="project-name" name="ProjectName" placeholder="Auto-filled from filename" class="form-input" />
+    </div>
+
+    <button type="submit" id="submit-btn" class="btn btn-primary w-100" style="padding: var(--space-3); font-size: var(--text-base); margin-top: var(--space-6);">Analyse Project →</button>
+  </form>
+
+  <!-- Security warning -->
+  <div style="margin-top: var(--space-8); display: flex; gap: var(--space-3); padding: var(--space-4); background: var(--color-accent-light); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: var(--text-xs); color: var(--color-text-secondary); line-height: 1.6;">
+    <span style="font-size: var(--text-lg); line-height: 1;">⚠</span>
+    <p>
+      Your source code is compiled and processed locally inside secure sandboxes on our servers and deleted immediately after analysis. We never store or share your code.
+    </p>
+  </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/upload.js" asp-append-version="true"></script>
+}

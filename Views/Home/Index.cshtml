@@ -1,0 +1,374 @@
+@{
+  ViewData["Title"] = "Stop Guessing. Start Deploying.";
+}
+
+<!-- Section 1: Hero Container -->
+<section class="hero-container py-5">
+  <div class="container d-flex flex-wrap align-items-center" style="gap: var(--space-8);">
+    
+    <!-- Left Hero Copy -->
+    <div class="col-lg-6" style="flex: 1; min-width: 320px;">
+      <div class="hero-badge">
+        <span>✦</span>
+        <span>Powered by Roslyn Static Analysis</span>
+      </div>
+      <h1 class="hero-title">
+        Stop Guessing.<br/>
+        <span class="hero-title-accent">Start Deploying.</span>
+      </h1>
+      <p class="hero-subtitle">
+        CloudAdvisor reads your ASP.NET Core code and tells you exactly which AWS services you need — with cost estimates, automatically.
+      </p>
+      
+      <div class="hero-ctas">
+        <a href="/register" class="btn btn-primary">Get Started Free →</a>
+        <a href="/about" class="btn btn-ghost">Watch Demo ▷</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span>No cloud expertise needed</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span>Free tier available</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">✓</span>
+          <span>Results in under 30 seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Hero: Animated Node Graph SVG -->
+    <div class="col-lg-6 hero-graph" style="flex: 1; min-width: 320px;">
+      <svg class="graph-svg" viewBox="0 0 500 400" id="hero-node-graph">
+        <!-- Connecting paths -->
+        <path d="M100,200 L250,80" class="graph-link" />
+        <path d="M100,200 L250,200" class="graph-link" />
+        <path d="M100,200 L250,320" class="graph-link" />
+        <path d="M250,80 L400,140" class="graph-link" />
+        <path d="M250,320 L400,260" class="graph-link" />
+        <path d="M250,200 L400,200" class="graph-link" />
+
+        <!-- Node 1: User / Edge (CloudFront) -->
+        <g class="graph-node" transform="translate(100, 200)">
+          <circle r="36" />
+          <text y="4">CDN</text>
+        </g>
+        <!-- Node 2: App Host (EC2) -->
+        <g class="graph-node" transform="translate(250, 80)">
+          <circle r="36" />
+          <text y="4">EC2</text>
+        </g>
+        <!-- Node 3: Worker (Lambda) -->
+        <g class="graph-node" transform="translate(250, 200)">
+          <circle r="36" />
+          <text y="4">Lambda</text>
+        </g>
+        <!-- Node 4: Storage (S3) -->
+        <g class="graph-node" transform="translate(250, 320)">
+          <circle r="36" />
+          <text y="4">S3</text>
+        </g>
+        <!-- Node 5: Database (RDS) -->
+        <g class="graph-node" transform="translate(400, 140)">
+          <circle r="36" />
+          <text y="4">RDS</text>
+        </g>
+        <!-- Node 6: User Directory (Cognito) -->
+        <g class="graph-node" transform="translate(400, 260)">
+          <circle r="36" />
+          <text y="4">Cognito</text>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Projects Analysed</div>
+      </div>
+      <div class="col-md-3 stat-item">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">AWS Services Mapped</div>
+      </div>
+      <div class="col-md-3 stat-item">
+        <div class="stat-num">&lt; 30s</div>
+        <div class="stat-label">Analysis Time</div>
+      </div>
+      <div class="col-md-3 stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free to Start</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: How It Works -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">How CloudAdvisor Works</h2>
+      <p class="section-desc">Simple. Fast. Smart.</p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-pill">01</div>
+          <h3 class="step-title">Upload ZIP</h3>
+          <p class="step-desc">
+            Upload your ASP.NET Core project as a ZIP archive. We accept any standard project structure.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-pill">02</div>
+          <h3 class="step-title">Analyse Code</h3>
+          <p class="step-desc">
+            Our Roslyn-powered engine scans every C# file, detecting controllers, databases, auth, file handling, and background services.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-pill">03</div>
+          <h3 class="step-title">Deploy Smart</h3>
+          <p class="step-desc">
+            Receive matched AWS service recommendations with clear explanations and a monthly cost breakdown — no cloud expertise required.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Features Showcase -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Product Showcase</h2>
+      <p class="section-desc">Full suite of cloud mapping capabilities.</p>
+    </div>
+
+    <!-- Feature 1 -->
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3 class="feature-title">Static Code Analysis — Zero Setup</h3>
+        <p class="feature-body">
+          CloudAdvisor uses the Microsoft Roslyn compiler to parse your C# source code into an Abstract Syntax Tree. No configuration, no running your app — just upload and go.
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="mockup-card">
+          <div class="code-mockup">
+<span class="code-comment">// Scanning syntax tree for DB bindings</span>
+<span class="code-keyword">public class</span> <span class="code-type">ProductRepository</span> : <span class="code-type">IRepository</span>
+{
+  <span class="code-keyword">private readonly</span> <span class="code-type">ApplicationDbContext</span> _context;
+  <span class="code-comment">// Result: Amazon RDS (PostgreSQL) Mapped ✓</span>
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3 class="feature-title">Intelligent AWS Service Mapping</h3>
+        <p class="feature-body">
+          A transparent rule-based engine maps each detected architectural component to the right AWS service. You see exactly why each service was recommended.
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="mockup-card">
+          <div style="border-left: 3px solid var(--color-accent); padding-left: var(--space-4);">
+            <div class="mono" style="font-weight: 700; color: var(--color-accent); font-size: var(--text-sm);">Amazon RDS Recommended</div>
+            <p style="font-size: var(--text-xs); color: var(--color-text-secondary); margin-top: var(--space-1);">
+              Triggered by: <code>DbContext</code> heritage in <code>Data/ApplicationDbContext.cs</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3 class="feature-title">Instant Cost Estimation</h3>
+        <p class="feature-body">
+          Get a monthly cost breakdown for every recommended service before you write a single line of infrastructure code. Plan your cloud budget confidently.
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="mockup-card" style="text-align: center;">
+          <div class="mono" style="font-size: var(--text-xl); font-weight: 800; color: var(--color-accent);">$117.97/mo</div>
+          <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1);">Total Estimated Compute & DB Cost</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="feature-row">
+      <div class="feature-content">
+        <h3 class="feature-title">Downloadable PDF Report</h3>
+        <p class="feature-body">
+          Generate a structured deployment planning report to share with your team, submit for review, or use as your cloud architecture specification.
+        </p>
+      </div>
+      <div class="feature-visual">
+        <div class="mockup-card" style="display: flex; gap: var(--space-3); align-items: center;">
+          <div style="font-size: var(--text-4xl);">📄</div>
+          <div>
+            <div class="mono" style="font-weight: 600; font-size: var(--text-sm);">CloudAdvisor_Report_MyWebApp.txt</div>
+            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Text advisory summary mapping</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Pricing Cards -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <p class="section-desc">Start free. Scale as you grow.</p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="pricing-card">
+        <h3 class="pricing-name">Free</h3>
+        <div class="pricing-price">$0<span class="pricing-period">/month</span></div>
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> 3 analyses</li>
+          <li><span class="feature-check">✓</span> Basic recommendations</li>
+          <li><span class="feature-check">✓</span> PDF report</li>
+        </ul>
+        <a href="/register" class="btn btn-ghost" style="margin-top: auto;">Get Free</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card popular">
+        <span class="pricing-popular-badge">★ POPULAR</span>
+        <h3 class="pricing-name" style="color: var(--color-accent);">Pro</h3>
+        <div class="pricing-price">$9<span class="pricing-period">/month</span></div>
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> Unlimited analyses</li>
+          <li><span class="feature-check">✓</span> Full AWS map</li>
+          <li><span class="feature-check">✓</span> Cost breakdown</li>
+          <li><span class="feature-check">✓</span> PDF reports</li>
+          <li><span class="feature-check">✓</span> Priority queue</li>
+        </ul>
+        <a href="/register" class="btn btn-primary" style="margin-top: auto;">Start Pro →</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <h3 class="pricing-name" style="color: var(--color-purple);">Enterprise</h3>
+        <div class="pricing-price" style="font-size: var(--text-xl); font-family: var(--font-ui); height: 50px; display: flex; align-items: center;">Contact Us</div>
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> Unlimited analyses</li>
+          <li><span class="feature-check">✓</span> Custom rules</li>
+          <li><span class="feature-check">✓</span> Priority email</li>
+          <li><span class="feature-check">✓</span> SLA support</li>
+          <li><span class="feature-check">✓</span> Private deploy</li>
+        </ul>
+        <a href="mailto:sulav010203@gmail.com" class="btn btn-ghost" style="margin-top: auto;">Contact Us</a>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--space-8); display: flex; justify-content: center; gap: var(--space-6); font-size: var(--text-xs); color: var(--color-text-muted);">
+      <span>✓ No credit card required</span>
+      <span>✓ Cancel anytime</span>
+    </div>
+    <div style="margin-top: var(--space-4); text-align: center; font-size: var(--text-xs); color: var(--color-text-muted);">
+      *(Demo — payments not implemented)*
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: Testimonials -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Loved by Developers</h2>
+      <p class="section-desc">Here is what our community says.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p class="quote-text">
+          CloudAdvisor saved me hours of cloud planning for my final year project. The recommendations were spot-on.
+        </p>
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">PS</div>
+          <div>
+            <div class="reviewer-name">Priya S.</div>
+            <div class="reviewer-role">CS Student, APU</div>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p class="quote-text">
+          Finally a tool that reads my code instead of making me fill out forms manually. The cost estimate was very close to our actual AWS bill.
+        </p>
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">RM</div>
+          <div>
+            <div class="reviewer-name">Raj M.</div>
+            <div class="reviewer-role">Backend Developer</div>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p class="quote-text">
+          Excellent tool for students learning cloud deployment. I now understand exactly what infrastructure my application needs.
+        </p>
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">DK</div>
+          <div>
+            <div class="reviewer-name">Dr. K.</div>
+            <div class="reviewer-role">Lecturer, LBEF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="cta-title">Ready to analyse your project?</h2>
+    <p class="cta-desc">
+      Get your AWS infrastructure recommendations in under 30 seconds — completely free.
+    </p>
+    <div class="d-flex justify-content-center gap-4">
+      <a href="/register" class="btn btn-primary">Create Free Account →</a>
+      <a href="/about" class="btn btn-ghost" style="color: #fff; border-color: #fff;">Learn How It Works</a>
+    </div>
+  </div>
+</section>
+
+@section Scripts {
+  <script src="~/js/landing.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,78 @@
+@{
+  ViewData["Title"] = "Pricing Plans";
+}
+
+<section class="pricing-section py-6">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <p class="section-desc">Start free. Scale as you grow.</p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="pricing-grid">
+      <!-- Free Plan -->
+      <div class="pricing-card">
+        <h3 class="pricing-name">Free</h3>
+        <div class="pricing-price">
+          $0<span class="pricing-period">/month</span>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> 3 analyses</li>
+          <li><span class="feature-check">✓</span> Basic recommendations</li>
+          <li><span class="feature-check">✓</span> PDF report download</li>
+          <li class="unavailable"><span class="feature-cross">–</span> Full AWS mapping</li>
+          <li class="unavailable"><span class="feature-cross">–</span> Cost breakdown charts</li>
+          <li class="unavailable"><span class="feature-cross">–</span> Priority queue</li>
+        </ul>
+        <a href="/register" class="btn btn-ghost" style="margin-top: auto;">Get Started Free</a>
+      </div>
+
+      <!-- Pro Plan (Popular Highlight) -->
+      <div class="pricing-card popular">
+        <span class="pricing-popular-badge">★ POPULAR</span>
+        <h3 class="pricing-name" style="color: var(--color-accent);">Pro</h3>
+        <div class="pricing-price">
+          $9<span class="pricing-period">/month</span>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> Unlimited analyses</li>
+          <li><span class="feature-check">✓</span> Full AWS mapping</li>
+          <li><span class="feature-check">✓</span> Cost breakdown charts</li>
+          <li><span class="feature-check">✓</span> PDF report download</li>
+          <li><span class="feature-check">✓</span> Priority analysis queue</li>
+          <li><span class="feature-check">✓</span> Extended retention</li>
+        </ul>
+        <a href="/register" class="btn btn-primary" style="margin-top: auto;">Start Pro →</a>
+      </div>
+
+      <!-- Enterprise Plan -->
+      <div class="pricing-card enterprise">
+        <h3 class="pricing-name" style="color: var(--color-purple);">Enterprise</h3>
+        <div class="pricing-price" style="font-size: var(--text-2xl); font-family: var(--font-ui); height: 58px; display: flex; align-items: center;">
+          Contact Us
+        </div>
+        <ul class="pricing-features">
+          <li><span class="feature-check">✓</span> Unlimited analyses</li>
+          <li><span class="feature-check">✓</span> Custom recommendation rules</li>
+          <li><span class="feature-check">✓</span> Priority email & SLA support</li>
+          <li><span class="feature-check">✓</span> Private cloud deployment</li>
+          <li><span class="feature-check">✓</span> Dedicated security review</li>
+          <li><span class="feature-check">✓</span> Multi-user accounts</li>
+        </ul>
+        <a href="mailto:sulav010203@gmail.com?subject=CloudAdvisor Enterprise Query" class="btn btn-ghost" style="margin-top: auto; border-color: var(--color-purple); color: var(--color-text-primary);">Contact Support</a>
+      </div>
+    </div>
+
+    <!-- Pricing Trust Badges -->
+    <div style="margin-top: var(--space-8); display: flex; justify-content: center; gap: var(--space-8); font-size: var(--text-sm); color: var(--color-text-secondary);">
+      <span>✓ No credit card required</span>
+      <span>✓ Cancel anytime</span>
+    </div>
+
+    <!-- Demo Notice -->
+    <div style="margin-top: var(--space-12); text-align: center; font-size: var(--text-xs); color: var(--color-text-muted);">
+      *(Demo mode — actual payment processing is not implemented. Plan options link directly to account registration.)*
+    </div>
+  </div>
+</section>

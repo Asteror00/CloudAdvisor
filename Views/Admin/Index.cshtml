@@ -1,0 +1,98 @@
+@{
+  ViewData["Title"] = "Admin Overview";
+}
+
+<div class="container py-5">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <h3 class="admin-sidebar-title">CloudAdvisor Admin</h3>
+      <ul class="admin-menu">
+        <li><a href="/admin" class="active">📊 Overview</a></li>
+        <li><a href="/admin/users">👥 Users</a></li>
+        <li><a href="/admin/sessions">🔍 All Sessions</a></li>
+        <li><a href="/admin/rules">⚙ Rules</a></li>
+        <li><a href="/admin/pricing">💰 Pricing</a></li>
+      </ul>
+      <div style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--color-border);">
+        <a href="/dashboard" style="font-size: var(--text-sm); color: var(--color-text-secondary);">← Back to App</a>
+      </div>
+    </aside>
+
+    <!-- Main Panel -->
+    <div class="admin-main">
+      <div class="card-title-bar">
+        <h2>System Overview</h2>
+        <span class="badge-required" style="background: var(--color-accent-light); color: var(--color-accent); border-color: var(--color-border);">Admin Controls</span>
+      </div>
+
+      <!-- Stats Cards Grid -->
+      <div class="dashboard-stats" style="margin-bottom: var(--space-8);">
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon">👥</div>
+          <div>
+            <div class="dashboard-stat-label">Total Users</div>
+            <div class="dashboard-stat-value" id="stat-total-users">-</div>
+          </div>
+        </div>
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon">📈</div>
+          <div>
+            <div class="dashboard-stat-label">Analyses Run</div>
+            <div class="dashboard-stat-value" id="stat-total-analyses">-</div>
+          </div>
+        </div>
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon">📅</div>
+          <div>
+            <div class="dashboard-stat-label">This Week</div>
+            <div class="dashboard-stat-value" id="stat-analyses-week">-</div>
+          </div>
+        </div>
+        <div class="dashboard-stat-card">
+          <div class="dashboard-stat-icon">☁</div>
+          <div>
+            <div class="dashboard-stat-label">Common Rec</div>
+            <div class="dashboard-stat-value" id="stat-common-rec" style="font-size: var(--text-sm);">-</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Card -->
+      <div class="table-wrapper" style="padding: var(--space-6); margin-bottom: var(--space-8);">
+        <h3 style="margin-bottom: var(--space-4); font-size: var(--text-base); font-weight: 700;">Analyses Run (Last 7 Days)</h3>
+        <div style="position: relative; height: 260px; width: 100%;">
+          <canvas id="analyses-line-chart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Activity Feed -->
+      <div class="table-wrapper">
+        <div class="card-title-bar" style="padding: var(--space-4) var(--space-6) 0 var(--space-6);">
+          <h3 style="font-size: var(--text-base); font-weight: 700;">Recent Platform Activity</h3>
+        </div>
+        <table class="custom-table" style="margin-top: var(--space-4);">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>User</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recent-activity-list">
+            <tr>
+              <td colspan="4" class="text-center">Loading activity feed...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <!-- Chart.js for overview charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="~/js/admin.js" asp-append-version="true"></script>
+}

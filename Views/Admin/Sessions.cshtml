@@ -1,0 +1,66 @@
+@{
+  ViewData["Title"] = "All Sessions";
+}
+
+<div class="container py-5">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <h3 class="admin-sidebar-title">CloudAdvisor Admin</h3>
+      <ul class="admin-menu">
+        <li><a href="/admin">📊 Overview</a></li>
+        <li><a href="/admin/users">👥 Users</a></li>
+        <li><a href="/admin/sessions" class="active">🔍 All Sessions</a></li>
+        <li><a href="/admin/rules">⚙ Rules</a></li>
+        <li><a href="/admin/pricing">💰 Pricing</a></li>
+      </ul>
+      <div style="margin-top: var(--space-8); padding-top: var(--space-4); border-top: 1px solid var(--color-border);">
+        <a href="/dashboard" style="font-size: var(--text-sm); color: var(--color-text-secondary);">← Back to App</a>
+      </div>
+    </aside>
+
+    <!-- Main Panel -->
+    <div class="admin-main">
+      <div class="card-title-bar" style="margin-bottom: var(--space-6);">
+        <h2>All Analysis Sessions</h2>
+      </div>
+
+      <!-- Filters Row -->
+      <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap;">
+        <input type="text" id="sessions-search" placeholder="Search project or email..." class="form-input" style="max-width: 300px; flex-grow: 1;" />
+        <select id="status-filter" class="form-input" style="max-width: 160px;">
+          <option value="All">All Statuses</option>
+          <option value="Completed">Completed</option>
+          <option value="Failed">Failed</option>
+          <option value="Processing">Processing</option>
+        </select>
+      </div>
+
+      <!-- Sessions Table -->
+      <div class="table-wrapper">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>User</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Features</th>
+              <th>Cost/mo</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="sessions-table-body">
+            <tr>
+              <td colspan="7" class="text-center">Loading platform sessions...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/admin-sessions.js" asp-append-version="true"></script>
+}

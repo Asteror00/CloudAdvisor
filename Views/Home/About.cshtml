@@ -1,0 +1,58 @@
+@{
+  ViewData["Title"] = "How It Works";
+}
+
+<section class="how-it-works py-6" style="min-height: 80vh; display: flex; align-items: center;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">How CloudAdvisor Works</h2>
+      <p class="section-desc">Simple. Fast. Smart.</p>
+    </div>
+
+    <div class="row g-4" style="margin-top: var(--space-8);">
+      <!-- Step 1 -->
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-pill">STEP 01</div>
+          <div style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">📂</div>
+          <h3 class="step-title">Upload ZIP Archive</h3>
+          <p class="step-desc">
+            Upload your ASP.NET Core project as a standard ZIP archive. We accept standard project directories, solution folders, or nested multi-project architectures.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-pill">STEP 02</div>
+          <div style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">⚙</div>
+          <h3 class="step-title">Deep Static Analysis</h3>
+          <p class="step-desc">
+            Our Microsoft Roslyn-powered compiler parser scans every C# (.cs) source file in the upload. It checks controllers, database contexts, attribute flags, file handling routines, and caching injections.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="col-md-4">
+        <div class="step-card">
+          <div class="step-pill">STEP 03</div>
+          <div style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">☁</div>
+          <h3 class="step-title">Deploy Smarter</h3>
+          <p class="step-desc">
+            Receive matched AWS service configurations, detailed justifications, an itemized monthly cost estimate, and an interactive system topology network graph instantly.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security disclaimer -->
+    <div style="margin-top: var(--space-12); padding: var(--space-6); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); text-align: center;">
+      <h4 style="font-size: var(--text-base); font-weight: 700; margin-bottom: var(--space-2); color: var(--color-accent);">🔒 Developer Code Privacy Security</h4>
+      <p style="font-size: var(--text-sm); color: var(--color-text-secondary); max-width: 680px; margin: 0 auto;">
+        We process your source code locally inside secure temporary sandboxes on our servers and purge it immediately after static analysis. We never store, index, or share your source files.
+      </p>
+    </div>
+  </div>
+</section>

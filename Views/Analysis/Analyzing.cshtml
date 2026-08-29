@@ -1,0 +1,61 @@
+@{
+  ViewData["Title"] = "Analyzing Project";
+}
+
+<div class="container py-5">
+  <div class="analyzing-container">
+    
+    <!-- Status Polling Interface -->
+    <div id="status-container" style="width: 100%;">
+      <div class="progress-ring-container" style="margin: 0 auto var(--space-8) auto;">
+        <svg class="progress-ring" width="120" height="120">
+          <circle class="progress-ring-circle-bg" cx="60" cy="60" r="48" />
+          <circle class="progress-ring-circle" cx="60" cy="60" r="48" />
+        </svg>
+        <div class="progress-percentage" id="progress-percent">0%</div>
+      </div>
+
+      <h2 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2);">Analysing your project...</h2>
+      <p class="text-muted" style="font-size: var(--text-sm); margin-bottom: var(--space-8);">This usually takes 10–30 seconds. Please keep this window open.</p>
+
+      <!-- Checklist -->
+      <div class="status-checklist">
+        <div class="checklist-item pending" id="step-received">
+          <span class="checklist-item-text">✓ Project received</span>
+          <span class="checklist-item-icon"></span>
+        </div>
+        <div class="checklist-item pending" id="step-extracted">
+          <span class="checklist-item-text">✓ Files extracted</span>
+          <span class="checklist-item-icon"></span>
+        </div>
+        <div class="checklist-item pending" id="step-roslyn">
+          <span class="checklist-item-text">⟳ Running Roslyn analysis...</span>
+          <span class="checklist-item-icon"></span>
+        </div>
+        <div class="checklist-item pending" id="step-mapping">
+          <span class="checklist-item-text">○ Mapping to AWS services</span>
+          <span class="checklist-item-icon"></span>
+        </div>
+        <div class="checklist-item pending" id="step-costs">
+          <span class="checklist-item-text">○ Calculating costs</span>
+          <span class="checklist-item-icon"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Card (Hidden by default) -->
+    <div class="error-card" id="error-card" style="display: none;">
+      <div class="error-icon">✗</div>
+      <h3 style="font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-3); color: var(--color-danger);">Analysis Failed</h3>
+      <p style="font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--space-6);" id="error-msg-text">
+        An error occurred during static analysis compilation.
+      </p>
+      <a href="/upload" class="btn btn-primary">Try Again</a>
+    </div>
+
+  </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/analyzing.js" asp-append-version="true"></script>
+}

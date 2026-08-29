@@ -1,0 +1,84 @@
+{
+  "rules": [
+    {
+      "ruleId": "RULE_001",
+      "triggerFeature": "Controller",
+      "condition": "count >= 1",
+      "awsService": "Amazon EC2",
+      "serviceCategory": "Compute",
+      "tier": "t3.micro",
+      "priority": "Required",
+      "reason": "Your application has {count} controller(s) exposing HTTP endpoints. EC2 provides the compute capacity to host and serve your ASP.NET Core application."
+    },
+    {
+      "ruleId": "RULE_002",
+      "triggerFeature": "Controller",
+      "condition": "count >= 5",
+      "awsService": "AWS Elastic Load Balancer",
+      "serviceCategory": "Networking",
+      "tier": "Application Load Balancer",
+      "priority": "Recommended",
+      "reason": "With {count} controllers indicating a moderately complex API, a load balancer distributes traffic and improves availability."
+    },
+    {
+      "ruleId": "RULE_003",
+      "triggerFeature": "DbContext",
+      "condition": "count >= 1",
+      "awsService": "Amazon RDS (SQL Server)",
+      "serviceCategory": "Database",
+      "tier": "db.t3.medium",
+      "priority": "Required",
+      "reason": "A DbContext detected ({name}) indicates relational database usage. Amazon RDS provides a managed SQL Server instance compatible with Entity Framework Core."
+    },
+    {
+      "ruleId": "RULE_004",
+      "triggerFeature": "FileHandling",
+      "condition": "count >= 1",
+      "awsService": "Amazon S3",
+      "serviceCategory": "Storage",
+      "tier": "Standard",
+      "priority": "Required",
+      "reason": "File upload/handling detected. Amazon S3 provides scalable, durable object storage for user-uploaded files."
+    },
+    {
+      "ruleId": "RULE_005",
+      "triggerFeature": "AuthMiddleware",
+      "condition": "present",
+      "awsService": "Amazon Cognito",
+      "serviceCategory": "Identity",
+      "tier": "Standard",
+      "priority": "Recommended",
+      "reason": "Authentication middleware detected. Amazon Cognito provides managed user authentication, supporting JWT tokens compatible with ASP.NET Core Identity."
+    },
+    {
+      "ruleId": "RULE_006",
+      "triggerFeature": "BackgroundService",
+      "condition": "count >= 1",
+      "awsService": "AWS Lambda",
+      "serviceCategory": "Compute",
+      "tier": "Standard",
+      "priority": "Recommended",
+      "reason": "Background service(s) detected. AWS Lambda can offload scheduled or event-driven tasks from your main EC2 instance, reducing compute costs."
+    },
+    {
+      "ruleId": "RULE_007",
+      "triggerFeature": "Controller",
+      "condition": "count >= 1",
+      "awsService": "Amazon CloudFront",
+      "serviceCategory": "Networking",
+      "tier": "Standard",
+      "priority": "Optional",
+      "reason": "A CDN such as CloudFront can cache static assets and reduce latency for your API consumers globally."
+    },
+    {
+      "ruleId": "RULE_008",
+      "triggerFeature": "DbContext",
+      "condition": "dbSetCount >= 5",
+      "awsService": "Amazon RDS Multi-AZ",
+      "serviceCategory": "Database",
+      "tier": "db.t3.large",
+      "priority": "Recommended",
+      "reason": "Multiple DbSet entities ({dbSetCount}) indicate a complex data model. Multi-AZ deployment ensures high availability for your database."
+    }
+  ]
+}
