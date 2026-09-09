@@ -30,7 +30,7 @@ function renderRules(services) {
   container.innerHTML = '';
 
   const getPriority = (name) => {
-    const n = name.toUpperCase();
+    const n = (name || '').toUpperCase();
     if (n.includes('EC2') || n.includes('RDS') || n.includes('VPC') || n.includes('IAM') || n.includes('CERTIFICATE')) {
       return { label: 'Required', class: 'badge-required' };
     }
@@ -42,25 +42,25 @@ function renderRules(services) {
 
   services.forEach((s, idx) => {
     const ruleCode = `RULE_0${s.id.toString().padStart(2, '0')}`;
-    const priority = getPriority(s.ServiceName);
+    const priority = getPriority(s.serviceName);
     const card = document.createElement('div');
     card.className = 'rule-card';
     card.innerHTML = `
       <div class="rule-card-header">
-        <div class="rule-card-title">${ruleCode} - ${s.ServiceName}</div>
+        <div class="rule-card-title">${ruleCode} - ${s.serviceName}</div>
         <span class="${priority.class}">${priority.label}</span>
       </div>
       <div class="rule-field">
         <div class="rule-field-label">Trigger Feature:</div>
-        <div class="rule-field-val">${s.TriggerFeature}</div>
+        <div class="rule-field-val">${s.triggerFeature}</div>
       </div>
       <div class="rule-field">
         <div class="rule-field-label">Condition:</div>
-        <div class="rule-field-val">${s.TriggerFeature === 'Always' ? 'Always Recommended' : 'Feature Detected == true'}</div>
+        <div class="rule-field-val">${s.triggerFeature === 'Always' ? 'Always Recommended' : 'Feature Detected == true'}</div>
       </div>
       <div class="form-group" style="margin-top: var(--space-4);">
         <label class="form-label">Reason Text (Justification)</label>
-        <textarea class="form-input rule-textarea" id="rule-textarea-${s.id}" rows="3" style="width: 100%; min-height: 80px; resize: vertical; margin-bottom: var(--space-3);">${s.Description}</textarea>
+        <textarea class="form-input rule-textarea" id="rule-textarea-${s.id}" rows="3" style="width: 100%; min-height: 80px; resize: vertical; margin-bottom: var(--space-3);">${s.description}</textarea>
       </div>
       <div class="d-flex gap-3">
         <button class="btn btn-primary btn-save-rule" data-id="${s.id}" style="padding: var(--space-2) var(--space-4); font-size: var(--text-xs);">Save Rule</button>
@@ -93,7 +93,7 @@ function renderRules(services) {
         if (response.ok) {
           Toast.show('Rule updated successfully', 'success');
           // Update local cache
-          s.Description = updatedText;
+          s.description = updatedText;
         } else {
           Toast.show('Failed to update rule.', 'error');
         }
@@ -109,7 +109,7 @@ function renderRules(services) {
     // Reset Action
     card.querySelector('.btn-reset-rule').addEventListener('click', () => {
       const textarea = document.getElementById(`rule-textarea-${s.id}`);
-      textarea.value = s.Description;
+      textarea.value = s.description;
       Toast.show('Justification text reset.', 'info');
     });
   });

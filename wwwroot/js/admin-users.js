@@ -67,10 +67,10 @@ function renderUsersTable(users) {
       <td class="font-weight-bold">${u.fullName}</td>
       <td class="mono">${u.email}</td>
       <td><span class="status-badge status-badge-completed" style="background: var(--color-accent-light); color: var(--color-accent);">${u.role}</span></td>
-      <td>${new Date(u.joined).toLocaleDateString()}</td>
-      <td class="mono">${u.analyses}</td>
+      <td>${new Date(u.createdAt).toLocaleDateString()}</td>
+      <td class="mono">${u.analysisCount}</td>
       <td>
-        <button class="btn-table-action view-user-btn" data-id="${u.id}">View</button>
+        <button class="btn-table-action view-user-btn" data-id="${u.userId}">View</button>
       </td>
     `;
     tbody.appendChild(row);
@@ -102,7 +102,7 @@ function openUserDrawer(user) {
   document.getElementById('drawer-user-name').textContent = user.fullName;
   document.getElementById('drawer-user-email').textContent = user.email;
   document.getElementById('drawer-user-role').textContent = user.role;
-  document.getElementById('drawer-user-joined').textContent = new Date(user.joined).toLocaleDateString();
+  document.getElementById('drawer-user-joined').textContent = new Date(user.createdAt).toLocaleDateString();
 
   // Populate their session list in the drawer
   const sessionList = document.getElementById('drawer-sessions-list');
@@ -161,7 +161,7 @@ function exportUsersToCSV() {
   csvContent += 'ID,FullName,Email,Role,JoinDate,AnalysesRun\r\n';
 
   usersCache.forEach(u => {
-    const row = `"${u.id}","${u.fullName}","${u.email}","${u.role}","${new Date(u.joined).toLocaleDateString()}",${u.analyses}`;
+    const row = `"${u.userId}","${u.fullName}","${u.email}","${u.role}","${new Date(u.createdAt).toLocaleDateString()}",${u.analysisCount}`;
     csvContent += row + '\r\n';
   });
 

@@ -104,7 +104,7 @@ async function loadDashboardData() {
         costText = `$${parseFloat(session.totalCost).toFixed(2)}`;
         actionButtons = `
           <a href="/results/${session.id}" class="btn-table-action me-2">View</a>
-          <a href="/api/project/report/${session.id}" class="btn-table-action" download>PDF</a>
+          <a href="#" onclick="Auth.downloadReport('${session.id}'); return false;" class="btn-table-action">PDF</a>
         `;
       } else if (session.status === 'Failed') {
         statusBadge = `<span class="status-badge status-badge-failed">✗ Failed</span>`;
